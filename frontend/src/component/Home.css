@@ -1,0 +1,58 @@
+.home {
+  text-align: center;
+  padding: 20px;
+  background-color: #2e6da4;
+}
+
+.home h1 {
+    font-size: 3rem; /* Başlık boyutunu artırmak için */
+    text-align: center; /* Ortalamak için */
+    margin-bottom: 30px; /* Kartlarla arasına boşluk bırakmak için */
+    color: #f9f9f9; /* Beyaz renk */
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Satır dolunca alt satıra geçmesini sağlar */
+  justify-content: center; /* Kartları yatay ortalar */
+  gap: 20px; /* Kartlar arasında boşluk bırakır */
+
+}
+
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #0015fa;
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px; /* Kart genişliği */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Üzerine gelince büyütme efekti */
+  background-color: #bde7f3;
+}
+
+button {
+  background-color: #007bff;
+  color: #afe0fb;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 30px;
+  width: 200px;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #06759a;
+}
+
+.img{
+  width: 100%; /* Resim genişliği karta uyacak şekilde */
+  height: auto; /* Oranlarını koruyarak yeniden boyutlandırır */
+  border-radius: 8px 8px 0 0; /* Üst kenarları yuvarlatır */
+  margin-bottom: 15px; /* Resim ile içerik arasına boşluk ekler */
+}
+

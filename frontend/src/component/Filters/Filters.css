@@ -1,0 +1,13 @@
+.average {
+  display: flex;
+  flex-direction: column; /* Elemanların dikey hizalanması */
+  align-items: center;    /* Yatayda ortalama */
+  gap: 20px;              /* Elemanlar arasında boşluk */
+}
+
+.image-container {
+  display: flex;
+  gap: 20px;              /* Resimler arasında boşluk */
+  justify-content: center; /* Resimleri yatayda ortalama */
+  align-items: center;    /* Resimleri dikeyde ortalama */
+}
