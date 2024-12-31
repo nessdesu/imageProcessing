@@ -6,6 +6,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+PORT = os.environ.get("PORT", 8000)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -15,7 +16,11 @@ SECRET_KEY = 'django-insecure-xstcah58b)c9eqcc^hjypf+2xeufw^#b9-=k5*%ozhl)kv^mpa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'imageprocessing-ugk0.onrender.com'
+]
 
 
 # Application definition
@@ -134,4 +139,5 @@ CORS_ALLOW_CREDENTIALS = True
 # Statik dosyaların bulunduğu dizini belirtin
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend', 'build', 'static'),  # React build statik dosyaları
+    BASE_DIR / "frontend/build/static",
 ]
