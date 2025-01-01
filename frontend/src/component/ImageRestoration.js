@@ -63,7 +63,13 @@ function ImageRestoration() {
                         {showContent()}
                     </div>
                 ) : (
+                    <div>
                     <h2>Choose a technique.</h2>
+                        <p>
+                           Image restoration is the process of recovering a degraded or distorted image to its original or improved quality by reversing the effects of noise, blur, or other imperfections. Unlike noise reduction, which focuses solely on minimizing random noise, restoration involves mathematical models to reconstruct lost details and correct distortions. Techniques such as deconvolution, Wiener filtering, and deep learning-based approaches are commonly used. Image restoration is widely applied in fields like astronomy, medical imaging, and forensic analysis, where accurate and high-quality images are essential for interpretation and decision-making.
+                        </p>
+                        <img src="/Photo-restoration.jpg"/>
+                    </div>
                 )}
             </div>
         </div>

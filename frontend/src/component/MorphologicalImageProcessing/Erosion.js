@@ -45,33 +45,41 @@ function Erosion() {
             console.error("Erosion işlemi sırasında hata oluştu:", error);
         }
     }
-    return (
-        <div className="erosion">
-            <h1>Erosion</h1>
-            <input type="file" onChange={handleImageUpload} />
+return (
+    <div className="erosion">
+        <p className="description">
+            Erosion is a morphological image processing technique that removes pixels from the boundaries of objects in an image. It is used to shrink the boundaries of objects in an image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
             {image && <img src={image} alt="Uploaded Image" width="300" />}
-            {selectedFile && (
-                <div>
-                    <label htmlFor="kernelSize">Kernel Size:</label>
-                    <input
-                        id="kernelSize"
-                        type="number"
-                        value={kernelSize}
-                        onChange={handleKernelSizeChange}
-                    />
-                    <label htmlFor="iterations">Iterations:</label>
-                    <input
-                        id="iterations"
-                        type="number"
-                        value={iterations}
-                        onChange={handleIterationsChange}
-                    />
-                    <button onClick={handleErosion}>Erosion</button>
-                </div>
-            )}
             {erodedImage && <img src={erodedImage} alt="Erosion Result" width="300" />}
         </div>
-    );
+
+        {/* Kernel Size, Iterations ve Buton */}
+        {selectedFile && (
+            <div className="input-container">
+                <label htmlFor="kernelSize">Kernel Size:</label>
+                <input
+                    id="kernelSize"
+                    type="number"
+                    value={kernelSize}
+                    onChange={handleKernelSizeChange}
+                />
+                <label htmlFor="iterations">Iterations:</label>
+                <input
+                    id="iterations"
+                    type="number"
+                    value={iterations}
+                    onChange={handleIterationsChange}
+                />
+                <button onClick={handleErosion}>Erosion</button>
+            </div>
+        )}
+    </div>
+);
 }
 
 export default Erosion;

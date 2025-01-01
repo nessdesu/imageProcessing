@@ -39,26 +39,35 @@ function MedianFilter() {
             console.error("Median Filter işlemi sırasında hata oluştu:", error);
         }
     }
+return (
+    <div className="median-filter">
+        <h1 className="header">Median Filter</h1>
+        <p className="description">
+            Median Filter is a noise reduction technique that replaces each pixel value with the median of its neighboring pixels. It is used to remove noise and smooth out an image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
 
-        return (
-            <div className="median-filter">
-                <h1>Median Filter</h1>
-                <input type="file" onChange={handleImageUpload}/>
-                {image && <img src={image} alt="Uploaded Image" width="300"/>}
-                {selectfile && (
-                    <div>
-                        <label htmlFor="kernelSize">Kernel Size:</label>
-                        <input
-                            id="kernelSize"
-                            type="number"
-                            value={kernelSize}
-                            onChange={handleKernelSizeChange}
-                        />
-                        <button onClick={handleMedianFilter}>Median Filter</button>
-                    </div>
-                )}
-                {medianImage && <img src={medianImage} alt="Median Filtered Image" width="300"/>}
+        {/* Resimler yan yana */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {medianImage && <img src={medianImage} alt="Median Filtered Image" width="300" />}
+        </div>
+
+        {/* Kernel Size ve Buton */}
+        {selectfile && (
+            <div className="input-container">
+                <label htmlFor="kernelSize">Kernel Size:</label>
+                <input
+                    id="kernelSize"
+                    type="number"
+                    value={kernelSize}
+                    onChange={handleKernelSizeChange}
+                />
+                <button onClick={handleMedianFilter}>Median Filter</button>
             </div>
-        );
+        )}
+    </div>
+);
+
     }
 export default MedianFilter;

@@ -29,11 +29,11 @@ class ImageFilters:
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         return cv2.equalizeHist(gray)
 
-#clipLimit ve titileGridSize değerlerini kullanıcıdan al
+
     @staticmethod
-    def apply_a_histogram(image, cliptLimit, tileGridSize):
+    def a_histogram_equalization(image, cliptLimit, tileGridSize):
         gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-        clahe = cv2.createCLAHE(clipLimit=5.0, tileGridSize=(10,10))
+        clahe = cv2.createCLAHE(cliptLimit, tileGridSize)
         return clahe.apply(gray)
 
     @staticmethod

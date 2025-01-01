@@ -70,7 +70,11 @@ function MorphologicalImageProcessing() {
             {showContent()}
           </div>
         ) : (
+            <div>
           <h2>Choose a technique.</h2>
+                <p>Morphological image processing is a collection of operations used to analyze and process the structure of shapes within binary or grayscale images. These techniques are based on set theory and use a structuring element to probe the image. Common operations include dilation, which expands the boundaries of objects; erosion, which shrinks them; opening, which removes small objects; and closing, which fills small holes. Morphological processing is widely used in applications like image segmentation, noise removal, and feature extraction, particularly in fields requiring shape analysis such as medical imaging and industrial inspection.</p>
+                <img className="image-size" src="/morphologicalImageProcessing.webp"/>
+            </div>
         )}
       </div>
     </div>

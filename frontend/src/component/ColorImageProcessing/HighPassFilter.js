@@ -41,26 +41,35 @@ function HighPassFilter() {
             console.error("High Pass Filter işlemi sırasında hata oluştu:", error);
         }
     }
-    return (
-        <div className="high-pass">
-            <h1>High Pass Filter</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
-                <div>
-                    <label htmlFor="mask_size">Mask Size:</label>
-                    <input
-                        id="mask_size"
-                        type="number"
-                        value={maskSize}
-                        onChange={handleMaskSizeChange}
-                    />
-                    <button onClick={handleHighPassFilter}>High Pass Filter</button>
-                </div>
-            )}
-            {highPassFilteredImage && <img src={highPassFilteredImage} alt="High Pass Filtered Image" width="300"/>}
+return (
+    <div className="high-pass">
+        <h1 className="header">High Pass Filter</h1>
+        <p className="description">
+            High Pass Filter is a color image processing technique that removes low-frequency noise from an image. It is used to sharpen an image while removing the low-frequency noise.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {highPassFilteredImage && <img src={highPassFilteredImage} alt="High Pass Filtered Image" width="300" />}
         </div>
-    );
+
+        {/* Mask Size ve Buton */}
+        {selectedFile && (
+            <div className="input-container">
+                <label htmlFor="mask_size">Mask Size:</label>
+                <input
+                    id="mask_size"
+                    type="number"
+                    value={maskSize}
+                    onChange={handleMaskSizeChange}
+                />
+                <button onClick={handleHighPassFilter}>High Pass Filter</button>
+            </div>
+        )}
+    </div>
+);
 
 }
 

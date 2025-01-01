@@ -39,26 +39,36 @@ function InverseFiltering() {
         }
     }
 
-    return (
-        <div className="inverse-filtering">
-            <h1>Inverse Filtering</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectfile && (
-                <div>
-                    <label htmlFor="filterSize">Filter Size:</label>
-                    <input
-                        id="filterSize"
-                        type="number"
-                        value={filterSize}
-                        onChange={handleFilterSizeChange}
-                    />
-                    <button onClick={handleFilter}>Filter</button>
-                </div>
-            )}
-            {filteredImage && <img src={filteredImage} alt="Filtered Image" width="300"/>}
+ return (
+    <div className="inverse-filtering">
+        <h1 className="header">Inverse Filtering</h1>
+        <p className="description">
+            Inverse Filtering is a restoration technique that removes blur from an image. It is used to improve the quality of an image by enhancing the sharpness and clarity of the image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {filteredImage && <img src={filteredImage} alt="Filtered Image" width="300" />}
         </div>
-    );
+
+        {/* Filter Size ve Buton */}
+        {selectfile && (
+            <div className="input-container">
+                <label htmlFor="filterSize">Filter Size:</label>
+                <input
+                    id="filterSize"
+                    type="number"
+                    value={filterSize}
+                    onChange={handleFilterSizeChange}
+                />
+                <button onClick={handleFilter}>Filter</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default InverseFiltering;

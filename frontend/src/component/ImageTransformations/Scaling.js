@@ -47,33 +47,43 @@ function Scale() {
         }
     }
 
-    return (
-        <div className="scaling">
-            <h1>Scaling</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
-                <div>
-                    <label htmlFor="scaleX">Scale X:</label>
-                    <input
-                        id="scaleX"
-                        type="number"
-                        value={scaleX}
-                        onChange={handleScaleXChange}
-                    />
-                    <label htmlFor="scaleY">Scale Y:</label>
-                    <input
-                        id="scaleY"
-                        type="number"
-                        value={scaleY}
-                        onChange={handleScaleYChange}
-                    />
-                    <button onClick={handleScaling}>Scale</button>
-                </div>
-            )}
-            {scalingImage && <img src={scalingImage} alt="Scaled Image" width="300"/>}
+return (
+    <div className="scaling">
+        <h1 className="header">Scaling</h1>
+        <p className="description">
+            Scaling is a transformation that resizes an image by a certain scale factor along the x and y axes. It is used to enlarge or reduce the size of an image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimler yan yana */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {scalingImage && <img src={scalingImage} alt="Scaled Image" width="300" />}
         </div>
-    );
+
+        {/* Ölçekleme parametreleri */}
+        {selectedFile && (
+            <div className="input-container">
+                <label htmlFor="scaleX">Scale X:</label>
+                <input
+                    id="scaleX"
+                    type="number"
+                    value={scaleX}
+                    onChange={handleScaleXChange}
+                />
+                <label htmlFor="scaleY">Scale Y:</label>
+                <input
+                    id="scaleY"
+                    type="number"
+                    value={scaleY}
+                    onChange={handleScaleYChange}
+                />
+                <button onClick={handleScaling}>Scale</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default Scale;

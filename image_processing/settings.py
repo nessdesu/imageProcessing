@@ -6,7 +6,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-PORT = os.environ.get("PORT", 8000)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -139,5 +138,5 @@ CORS_ALLOW_CREDENTIALS = True
 # Statik dosyaların bulunduğu dizini belirtin
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend', 'build', 'static'),  # React build statik dosyaları
-    BASE_DIR / "frontend/build/static",
+
 ]

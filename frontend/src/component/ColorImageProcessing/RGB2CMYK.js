@@ -34,19 +34,29 @@ function RGB2CMYK() {
             console.error("RGB2CMYK işlemi sırasında hata oluştu:", error);
         }
     }
-    return (
-        <div className="rgb2cmyk">
-            <h1>RGB2CMYK</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectfile && (
-                <div>
-                    <button onClick={handleConvert}>Convert</button>
-                </div>
-            )}
-            {converted && <img src={converted} alt="Converted Image" width="300"/>}
+return (
+    <div className="rgb2cmyk">
+        <h1 className="header">RGB2CMYK</h1>
+        <p className="description">
+            RGB2CMYK is a color image processing technique that converts an RGB image to a CMYK image. It is used to analyze and manipulate the color information in an image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {converted && <img src={converted} alt="Converted Image" width="300" />}
         </div>
-    );
+
+        {/* Convert Butonu */}
+        {selectfile && (
+            <div className="button-container">
+                <button onClick={handleConvert}>Convert</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default RGB2CMYK;

@@ -11,3 +11,33 @@
   justify-content: center; /* Resimleri yatayda ortalama */
   align-items: center;    /* Resimleri dikeyde ortalama */
 }
+
+.button-container {
+    margin-top: 20px; /* Butonun üst boşluğu */
+    text-align: center;
+}
+
+.input-container {
+    margin-top: 30px; /* Input alanlarının üst boşluğu */
+    display: flex;
+
+    align-items: center;
+    gap: 10px; /* Input alanları arasına boşluk */
+}
+
+.header {
+    font-size: 2rem; /* Başlık boyutunu büyüt */
+    font-weight: bold; /* Kalın yap */
+    margin-bottom: 20px; /* Alt boşluk ekle */
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 20px; /* Dosya seç butonu ile arasına boşluk koy */
+}
+
+.image-size {
+    width: 500px; /* Resim boyutu */
+    margin-top: 20px;
+}

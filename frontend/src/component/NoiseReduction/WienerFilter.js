@@ -38,26 +38,36 @@ function WienerFilter() {
             console.error("Wiener Filter işlemi sırasında hata oluştu:", error);
         }
     }
-    return (
-        <div className="wiener-filter">
-            <h1>Wiener Filter</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectfile && (
-                <div>
-                    <label htmlFor="kernelSize">Kernel Size:</label>
-                    <input
-                        id="kernelSize"
-                        type="number"
-                        value={kernelSize}
-                        onChange={handleKernelSizeChange}
-                    />
-                    <button onClick={handleWienerFilter}>Wiener Filter</button>
-                </div>
-            )}
-            {wienerImage && <img src={wienerImage} alt="Wiener Filtered Image" width="300"/>}
+return (
+    <div className="wiener-filter">
+        <h1 className="header">Wiener Filter</h1>
+        <p className="description">
+            Wiener Filter is a noise reduction technique that removes noise from an image by estimating the original image from a noisy image. It is used to improve the quality of an image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {wienerImage && <img src={wienerImage} alt="Wiener Filtered Image" width="300" />}
         </div>
-    );
+
+        {/* Kernel Size ve Buton */}
+        {selectfile && (
+            <div className="input-container">
+                <label htmlFor="kernelSize">Kernel Size:</label>
+                <input
+                    id="kernelSize"
+                    type="number"
+                    value={kernelSize}
+                    onChange={handleKernelSizeChange}
+                />
+                <button onClick={handleWienerFilter}>Wiener Filter</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default WienerFilter;

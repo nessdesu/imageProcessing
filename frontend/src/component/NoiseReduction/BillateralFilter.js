@@ -53,11 +53,17 @@ function BillateralFilter(){
     }
     return (
         <div className="billateral-filter">
-            <h1>Billateral Filter</h1>
+            <h1 className="header">Billateral Filter</h1>
+            <p className="description">
+                Billateral Filter is a noise reduction technique that preserves edges while removing noise from an image. It is used to smooth out an image while keeping the edges sharp.
+            </p>
             <input type="file" onChange={handleImageUpload}/>
+            <div className="image-container">
             {image && <img src={image} alt="Uploaded Image" width="300"/>}
+            {billateralImage && <img src={billateralImage} alt="Billateral Filtered Image" width="300"/>}
+                </div>
             {selectfile && (
-                <div>
+                <div className="input-container">
                     <label htmlFor="kernelSize">Kernel Size:</label>
                     <input
                         id="kernelSize"
@@ -82,7 +88,7 @@ function BillateralFilter(){
                     <button onClick={handleBillateralFilter}>Billateral Filter</button>
                 </div>
             )}
-            {billateralImage && <img src={billateralImage} alt="Billateral Filtered Image" width="300"/>}
+
         </div>
     );
 }

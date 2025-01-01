@@ -42,21 +42,36 @@ function FourierTransform() {
         }
     }
 
-    return (
-        <div className="fourier-transform">
-            <h1>Fourier Transform</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            <div>
-                <label>
-                    Spec:
-                    <input type="text" value={spec} onChange={handleSpecChange}/>
-                </label>
-            </div>
-            {selectedFile && <button onClick={handleFourierTransform}>Apply Fourier Transform</button>}
-            {fourierImage && <img src={fourierImage} alt="Fourier Transformed Image" width="300"/>}
-        </div>
-    );
+  return (
+      <div className="fourier-transform">
+          <h1 className="header">Fourier Transform</h1>
+            <p className="description">
+                Fourier Transform is a mathematical operation that transforms an image from the spatial domain to the frequency domain. It is used to analyze the frequency components of an image and remove noise or enhance features.
+            </p>
+          <input type="file" onChange={handleImageUpload}/>
+
+          {/* Resimler yan yana */}
+          <div className="image-container">
+              {image && <img src={image} alt="Uploaded Image" width="300"/>}
+              {fourierImage && <img src={fourierImage} alt="Fourier Transformed Image" width="300"/>}
+          </div>
+
+          {/* Input alanı ve buton */}
+          <div className="input-container">
+              {selectedFile && (
+                  <div> {/* Kapsayıcı div eklendi */}
+                      <label>
+                          Spec:
+                          <input type="text" value={spec} onChange={handleSpecChange}/>
+                      </label>
+                      <button onClick={handleFourierTransform}>Apply Fourier Transform</button>
+                  </div>
+              )}
+          </div>
+      </div>
+
+  );
+
 }
 
 export default FourierTransform;

@@ -6,7 +6,7 @@ function HitOrMiss() {
     const [image, setImage] = useState(null);
     const [hitOrMissedImage, setHitOrMissedImage] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [matrix, setMatrix] = useState([[0, 0, 0], [0, 0, 0], [0, 0, 0]]);  // Matrix state'i başlatılıyor
+    const [matrix, setMatrix] = useState(null);  // Matrix state'i başlatılıyor
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -25,11 +25,16 @@ function HitOrMiss() {
         formData.append("image", selectedFile);
         formData.append("filter_type", "hit_or_miss");
 
-        console.log(image);
 
         // Matrix'i JSON formatında backend'e gönder
         if (matrix) {
             formData.append("matrix", JSON.stringify(matrix));  // Matrix'i JSON string olarak gönder
+        }
+
+        else
+        {
+            alert("Lütfen bir matrix seçin.");
+            return;
         }
 
         try {
@@ -50,20 +55,28 @@ function HitOrMiss() {
         }
     };
 
-    return (
-        <div className="hit-or-miss">
-            <h1>Hit or Miss</h1>
-            <input type="file" onChange={handleImageUpload} />
+return (
+    <div className="hit-or-miss">
+        <p className="description">
+            Hit or Miss is a morphological image processing technique that is used to detect a particular pattern in an image. It is used to detect the presence of a specific pattern in an image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
             {image && <img src={image} alt="Uploaded Image" width="300" />}
-            {selectedFile && (
-                <div>
-                    <Matrix onMatrixChange={handleMatrixChange} />  {/* Matrix bileşenine onMatrixChange'i geçir */}
-                    <button onClick={handleHitOrMiss}>Hit or Miss</button>
-                </div>
-            )}
             {hitOrMissedImage && <img src={hitOrMissedImage} alt="Hit or Miss Result" width="300" />}
         </div>
-    );
+
+        {/* Matrix ve Buton */}
+        {selectedFile && (
+            <div className="input-container">
+                <Matrix onMatrixChange={handleMatrixChange} />
+                <button onClick={handleHitOrMiss}>Hit or Miss</button>
+            </div>
+        )}
+    </div>
+);
 }
 
 export default HitOrMiss;

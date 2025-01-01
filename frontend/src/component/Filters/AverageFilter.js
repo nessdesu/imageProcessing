@@ -42,8 +42,11 @@ function AverageFilter() {
     }
 
 return (
-  <div className="average">
-    <h1>Average Filter</h1>
+  <div className="mainFilter">
+    <h1 className="header">Average Filter</h1>
+      <p className="description">
+          The average filter smooths an image by reducing noise. It works by replacing each pixel's value with the mean of the intensity values in its surrounding neighborhood, resulting in a blurred effect.
+      </p>
     <input type="file" onChange={handleImageUpload} />
     {selectedFile && (
       <div>

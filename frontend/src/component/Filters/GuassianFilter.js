@@ -40,22 +40,33 @@ function GuassianFilter() {
             console.error("Guassian Filter işlemi sırasında hata oluştu:", error);
         }
     }
+return (
+    <div className="average">
+        <h1 className="header">Gaussian Filter</h1>
+        <p className="description">
+           The Gaussian filter is a smoothing filter that reduces image noise and detail. It uses a Gaussian function to weight the surrounding pixel values, giving more influence to closer pixels and creating a natural blur.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Görseller yan yana */}
+        {image && guassianFilteredImage && (
+            <div className="image-container">
+                <img src={image} alt="Uploaded Image" width="300" />
+                <img src={guassianFilteredImage} alt="Gaussian Filter Result" width="300" />
+            </div>
+        )}
+
+        {/* Matris ve buton */}
+        {selectedFile && (
+            <div className="matrixContainer">
+                <Matrix onMatrixChange={setMatrix} />
+                <button onClick={handleGuassianFilter}>Gaussian Filter</button>
+            </div>
+        )}
+    </div>
+);
 
 
-    return (
-        <div className="guassian">
-            <h1>Guassian Filter</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
-                <div>
-                    <Matrix onMatrixChange={setMatrix}/>
-                    <button onClick={handleGuassianFilter}>Guassian Filter</button>
-                </div>
-            )}
-            {guassianFilteredImage && <img src={guassianFilteredImage} alt="Guassian Filter Result" width="300"/>}
-        </div>
-    )
 }
 
 export default GuassianFilter;

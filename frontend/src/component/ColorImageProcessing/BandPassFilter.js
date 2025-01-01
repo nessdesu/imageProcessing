@@ -46,33 +46,43 @@ function BandPassFilter() {
             console.error("Band Pass Filter işlemi sırasında hata oluştu:", error);
         }
     }
-    return (
-        <div className="band-pass">
-            <h1>Band Pass Filter</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
-                <div>
-                    <label htmlFor="low">Low:</label>
-                    <input
-                        id="low"
-                        type="number"
-                        value={low}
-                        onChange={handleLowChange}
-                    />
-                    <label htmlFor="high">High:</label>
-                    <input
-                        id="high"
-                        type="number"
-                        value={high}
-                        onChange={handleHighChange}
-                    />
-                    <button onClick={handleBandPassFilter}>Band Pass Filter</button>
-                </div>
-            )}
-            {bandPassFilteredImage && <img src={bandPassFilteredImage} alt="Band Pass Filtered Image" width="300"/>}
+return (
+    <div className="band-pass">
+        <h1 className="header">Band Pass Filter</h1>
+        <p className="description">
+            Band Pass Filter is a color image processing technique that removes both low-frequency and high-frequency noise from an image. It is used to sharpen an image while removing the low-frequency and high-frequency noise.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {bandPassFilteredImage && <img src={bandPassFilteredImage} alt="Band Pass Filtered Image" width="300" />}
         </div>
-    );
+
+        {/* Low, High ve Buton */}
+        {selectedFile && (
+            <div className="input-container">
+                <label htmlFor="low">Low:</label>
+                <input
+                    id="low"
+                    type="number"
+                    value={low}
+                    onChange={handleLowChange}
+                />
+                <label htmlFor="high">High:</label>
+                <input
+                    id="high"
+                    type="number"
+                    value={high}
+                    onChange={handleHighChange}
+                />
+                <button onClick={handleBandPassFilter}>Band Pass Filter</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default BandPassFilter;

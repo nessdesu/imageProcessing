@@ -33,17 +33,28 @@ function WaveletsTransformation() {
         }
     }
     return (
-        <div className="wavelets">
-            <h1>Wavelets Transformation</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
-                <div>
+    <div className="wavelets">
+        <h1 className="header">Wavelets Transformation</h1>
+        <p className="description">
+            Wavelets Transformation is a mathematical operation that decomposes an image into different frequency bands. It is used to analyze the frequency components of an image and remove noise or enhance features.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
 
-                    <button onClick={handleWaveletsTransform}>Wavelets Transformation</button>
-                </div>
-            )}{waveletsImage && <img src={waveletsImage} alt="Wavelets Transformation Result" width="300"/>}
-        </div>);
+        {/* Resimler yan yana */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {waveletsImage && <img src={waveletsImage} alt="Wavelets Transformation Result" width="300" />}
+        </div>
+
+        {/* Buton */}
+        {selectedFile && (
+            <div className="button-container">
+                <button onClick={handleWaveletsTransform}>Wavelets Transformation</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default WaveletsTransformation;

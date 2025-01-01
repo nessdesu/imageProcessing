@@ -46,33 +46,44 @@ function BandStopFilter() {
             console.error("Band Stop Filter işlemi sırasında hata oluştu:", error);
         }
     }
-    return (
-        <div className="band-stop">
-            <h1>Band Stop Filter</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
-                <div>
-                    <label htmlFor="low">Low:</label>
-                    <input
-                        id="low"
-                        type="number"
-                        value={low}
-                        onChange={handleLowChange}
-                    />
-                    <label htmlFor="high">High:</label>
-                    <input
-                        id="high"
-                        type="number"
-                        value={high}
-                        onChange={handleHighChange}
-                    />
-                    <button onClick={handleBandStopFilter}>Band Stop Filter</button>
-                </div>
-            )}
-            {bandStopFilteredImage && <img src={bandStopFilteredImage} alt="Band Stop Filtered Image" width="300"/>}
+  return (
+    <div className="band-stop">
+        <h1 className="header">Band Stop Filter</h1>
+        <p className="description">
+            Band Stop Filter is a color image processing technique that removes a specific range of frequencies from an image. It is used to remove a specific range of frequencies from an image while preserving the rest of the image.
+        </p>
+
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {bandStopFilteredImage && <img src={bandStopFilteredImage} alt="Band Stop Filtered Image" width="300" />}
         </div>
-    );
+
+        {/* Low, High ve Buton */}
+        {selectedFile && (
+            <div className="input-container">
+                <label htmlFor="low">Low:</label>
+                <input
+                    id="low"
+                    type="number"
+                    value={low}
+                    onChange={handleLowChange}
+                />
+                <label htmlFor="high">High:</label>
+                <input
+                    id="high"
+                    type="number"
+                    value={high}
+                    onChange={handleHighChange}
+                />
+                <button onClick={handleBandStopFilter}>Band Stop Filter</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default BandStopFilter;

@@ -72,7 +72,13 @@ function ImageSegmentation() {
                         {showContent()}
                     </div>
                 ) : (
+                    <div>
                     <h2>Choose a technique.</h2>
+                        <p>
+                            into meaningful regions or segments to simplify analysis. It aims to group pixels based on shared characteristics such as color, intensity, or texture, making it easier to identify objects, boundaries, or regions of interest. Segmentation is a crucial step in applications like object detection, medical imaging, and scene understanding, enabling precise analysis by isolating significant parts of an image while ignoring irrelevant details. Common approaches include thresholding, edge detection, region-based methods, and machine learning techniques.
+                        </p>
+                        <img src="/sphx_glr_plot_thresholding_001.png"  />
+                    </div>
                 )}
             </div>
         </div>

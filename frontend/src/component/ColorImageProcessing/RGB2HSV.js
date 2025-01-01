@@ -34,19 +34,29 @@ function RGB2HSV() {
             console.error("RGB2HSV işlemi sırasında hata oluştu:", error);
         }
     }
-    return (
-        <div className="rgb2hsv">
-            <h1>RGB2HSV</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectfile && (
-                <div>
-                    <button onClick={handleConvert}>Convert</button>
-                </div>
-            )}
-            {converted && <img src={converted} alt="Converted Image" width="300"/>}
+return (
+    <div className="rgb2hsv">
+        <h1 className="header">RGB2HSV</h1>
+        <p className="description">
+            RGB2HSV is a color image processing technique that converts an RGB image to an HSV image. It is used to analyze and manipulate the color information in an image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {converted && <img src={converted} alt="Converted Image" width="300" />}
         </div>
-    );
+
+        {/* Convert Butonu */}
+        {selectfile && (
+            <div className="button-container">
+                <button onClick={handleConvert}>Convert</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default RGB2HSV;

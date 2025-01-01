@@ -44,27 +44,38 @@ function Deblurring() {
             console.error("Deblurring işlemi sırasında hata oluştu:", error);
         }
     }
-    return (
-        <div className="deblurring">
-            <h1>Deblurring</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectfile && (
-                <div>
-                    <label htmlFor="kernelSize">Kernel Size:</label>
-                    <input
-                        id="kernelSize"
-                        type="number"
-                        value={kernelSize}
-                        onChange={handleKernelSizeChange}
-                    />
-                    {errorMessage && <p style={{color: "red"}}>{errorMessage}</p>}
-                    <button onClick={handleDeblur}>Deblur</button>
-                </div>
-            )}
-            {deblurredImage && <img src={deblurredImage} alt="Deblurred Image" width="300"/>}
+return (
+    <div className="deblurring">
+        <h1 className="header">Deblurring</h1>
+        <p className="description">
+            Deblurring is a restoration technique that removes blur from an image. It is used to improve the quality of an image by enhancing the sharpness and clarity of the image.
+        </p>
+
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {deblurredImage && <img src={deblurredImage} alt="Deblurred Image" width="300" />}
         </div>
-    );
+
+        {/* Kernel Size ve Buton */}
+        {selectfile && (
+            <div className="input-container">
+                <label htmlFor="kernelSize">Kernel Size:</label>
+                <input
+                    id="kernelSize"
+                    type="number"
+                    value={kernelSize}
+                    onChange={handleKernelSizeChange}
+                />
+                {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                <button onClick={handleDeblur}>Deblur</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default Deblurring;

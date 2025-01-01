@@ -70,7 +70,13 @@ function ColorImageProcessing() {
                         {showContent()}
                     </div>
                 ) : (
+                    <div>
                     <h2>Choose a technique.</h2>
+                        <p className="description">
+                            Color image processing involves techniques to analyze, manipulate, and enhance color information in digital images. It deals with images represented in color spaces such as RGB, HSV, YCbCr, or LAB, each offering unique advantages for different tasks. Key operations include color enhancement, color correction, histogram equalization in each channel, and color-based segmentation. These techniques are used in applications like object recognition, medical imaging, and video processing. By leveraging color information, this field provides a richer understanding of images compared to grayscale processing, enabling more precise analysis and visually appealing results.
+                        </p>
+                        <img src="/rgb.png"></img>
+                        </div>
                 )}
             </div>
         </div>

@@ -34,21 +34,28 @@ function HistogramEqualization(){
       console.error("Threshold işlemi sırasında hata oluştu:", error);
     }
   };
-      return (
-    <div className="histogram">
-      <h1>Histogram Equalization</h1>
-      <input type="file" onChange={handleImageUpload} />
-      {image && <img src={image} alt="Seçilen Resim" width="300" />}
-      {selectedFile && (
-        <div>
-          <button onClick={handleHistogramEqualization}>Histogram Yap</button>
-        </div>
-      )}
-                 {histogramEqualizedImage && (
-                <img src={histogramEqualizedImage} alt="Histogram Equalization Result" width="300" />
-            )}
-    </div>
-  );
+return (
+  <div className="mainFilter">
+    <h1 className="header">Histogram Equalization</h1>
+
+      <p className="description">Histogram equalization enhances image contrast by redistributing intensity values to make the histogram more uniform. It improves the visibility of details, especially in low-contrast images.</p>
+    <input type="file" onChange={handleImageUpload} />
+
+    {image && histogramEqualizedImage && (
+      <div className="image-container">
+        <img src={image} alt="Seçilen Resim" width="300" />
+        <img src={histogramEqualizedImage} alt="Histogram Equalization Result" width="300" />
+      </div>
+    )}
+
+    {selectedFile && (
+      <div>
+        <button onClick={handleHistogramEqualization}>Histogram Yap</button>
+      </div>
+    )}
+  </div>
+);
+
 }
 
 export default HistogramEqualization;

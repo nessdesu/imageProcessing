@@ -41,21 +41,27 @@ function Laplace() {
         }
     }
     return (
-       <div className="sobel">
-      <h1>Laplace Filter</h1>
-      <input type="file" onChange={handleImageUpload} />
-      {image && <img src={image} alt="Uploaded Image" width="300" />}
-        <div>
-            <Matrix onMatrixChange={setMatrix}/>
-        </div>
-      {selectedFile && (
-        <div>
-          <button onClick={handleLaplace}>Laplace Filter</button>
-        </div>
-      )}
-      {laplaceImage && <img src={laplaceImage} alt="Laplace Filter Result" width="300" />}
-    </div>
-  );
-}
+        <div className="mainFilter">
+            <h1 className="header">Laplace Filter</h1>
+            <p className="description">
+                The Laplace filter is an edge detection technique that highlights regions of rapid intensity change in an image. It enhances the edges of an image by emphasizing areas where the intensity changes abruptly.
+            </p>
+            <input type="file" onChange={handleImageUpload}/>
+            <div className="image-container">
+                {image && <img src={image} alt="Uploaded Image" width="300"/>}
 
-export default Laplace;
+                {laplaceImage && <img src={laplaceImage} alt="Laplace Filter Result" width="300"/>}
+            </div>
+                {selectedFile && (
+                    <div>
+                        <div>
+                            <Matrix onMatrixChange={setMatrix}/>
+                        </div>
+                        <button onClick={handleLaplace}>Laplace Filter</button>
+                    </div>
+                )}
+            </div>
+            );
+            }
+
+            export default Laplace;

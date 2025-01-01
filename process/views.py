@@ -9,6 +9,8 @@ from numpy.matrixlib.defmatrix import matrix
 
 from image_processing.filters import ImageFilters
 
+
+
 @csrf_exempt
 def apply_filter(request):
     if request.method == 'POST':
@@ -90,10 +92,12 @@ def apply_filter(request):
             return HttpResponse(buffer.tobytes(), content_type='image/png')
 
         elif filter_type == 'a_histogram_equalization':
-            clipLimit = request.POST.get('clip_limit')
-            tileGridSize = request.POST.get('tile_size')
+            clipLimit = request.POST.get('clipLimit')
+            tileSize= request.POST.get('tileSize')
             try:
-                a_histogram = ImageFilters.apply_a_histogram(img, float(clipLimit), tuple(map(int, tileGridSize.split(','))))
+                tileGridSize = int(tileSize)
+                tileGridSize = (tileGridSize, tileGridSize)
+                a_histogram = ImageFilters.a_histogram_equalization(img, float(clipLimit), tileGridSize)
             except cv2.error as e:
                 return JsonResponse({'error': 'OpenCV error', 'details': str(e)}, status=500)
             _, buffer = cv2.imencode('.png', a_histogram)

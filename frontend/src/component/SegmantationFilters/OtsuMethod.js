@@ -49,10 +49,17 @@ function OtsuMethod() {
     }
     return (
         <div className="average">
-            <h1>Otsu Method</h1>
+            <h1 className="header">Otsu Method</h1>
+            <p className="description">
+                The Otsu method is a thresholding technique that automatically calculates the optimal threshold value to separate the foreground and background of an image. It maximizes the inter-class variance between the two classes, making it ideal for image segmentation.
+            </p>
             <input type="file" onChange={handleImageUpload}/>
+            <div className="image-container">
             {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
+
+            {otsuImage && <img src={otsuImage} alt="Otsu Method Result" width="300"/>}
+                </div>
+               {selectedFile && (
                 <div>
                     <label htmlFor="firstValue">First Color:</label>
                     <input
@@ -71,7 +78,6 @@ function OtsuMethod() {
                     <button onClick={handleOtsuMethod}>Otsu Method</button>
                 </div>
             )}
-            {otsuImage && <img src={otsuImage} alt="Otsu Method Result" width="300"/>}
         </div>
     );
 }

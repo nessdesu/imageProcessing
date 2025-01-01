@@ -42,20 +42,29 @@ function Sobel() {
         }
         }
  return (
-    <div className="sobel" >
-      <h1>Sobel Filter</h1>
-      <input type="file" onChange={handleImageUpload} />
-      {image && <img src={image} alt="Uploaded Image" width="300" />}
-        <div>
-            <Matrix onMatrixChange={setMatrix}/>
-        </div>
-      {selectedFile && (
-        <div>
-          <button onClick={handleSobel}>Sobel Filter</button>
-        </div>
-      )}
-      {sobelImage && <img src={sobelImage} alt="Sobel Filter Result" width="300" />}
-    </div>
-  );
+     <div className="mainFilter">
+         <h1 className="header">Sobel Filter</h1>
+         <p className="description">
+             The Sobel filter is an edge detection technique that calculates the gradient of the image intensity in the horizontal and vertical directions. It highlights edges by emphasizing regions of rapid intensity change.
+         </p>
+         <input type="file" onChange={handleImageUpload}/>
+         <div className="image-container">
+             {image && <img src={image} alt="Uploaded Image" width="300"/>}
+
+
+             {sobelImage && <img src={sobelImage} alt="Sobel Filter Result" width="300"/>}
+         </div>
+
+             {selectedFile && (
+                 <div>
+                     <div>
+                         <Matrix onMatrixChange={setMatrix}/>
+                     </div>
+                     <button onClick={handleSobel}>Sobel Filter</button>
+                 </div>
+             )}
+     </div>
+ );
 }
+
 export default Sobel;

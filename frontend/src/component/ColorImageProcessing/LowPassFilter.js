@@ -48,34 +48,42 @@ function LowPassFilter() {
             }
         }
 
-        return (
-            <div className="low-pass">
-                <h1>Low Pass Filter</h1>
-                <input type="file" onChange={handleImageUpload}/>
-                {image && <img src={image} alt="Uploaded Image" width="300"/>}
-                {selectedFile && (
-                    <div>
-                        <label htmlFor="mask_size">Mask Size:</label>
-                        <input
-                            id="mask_size"
-                            type="number"
-                            value={maskSize}
-                            onChange={handleMaskSizeChange}
-                        />
-                        <label htmlFor="kernel">Kernel:</label>
-                        <input
-                            id="kernel"
-                            type="number"
-                            value={kernel}
-                            onChange={handleKernelChange}
-                        />
-                        <button onClick={handleLowPassFilter}>Low Pass Filter</button>
-                    </div>
-                )}
-              {lowPassFilterImage && <img src={lowPassFilterImage} alt="Low Pass Filtered Image" width="300" />}
+return (
+    <div className="low-pass">
+        <h1 className="header">Low Pass Filter</h1>
+        <p className="description">
+            Low Pass Filter is a color image processing technique that removes high-frequency noise from an image. It is used to smooth out an image while preserving the edges and details of the image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
 
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {lowPassFilterImage && <img src={lowPassFilterImage} alt="Low Pass Filtered Image" width="300" />}
+        </div>
+
+        {/* Mask Size, Kernel ve Buton */}
+        {selectedFile && (
+            <div className="input-container">
+                <label htmlFor="mask_size">Mask Size:</label>
+                <input
+                    id="mask_size"
+                    type="number"
+                    value={maskSize}
+                    onChange={handleMaskSizeChange}
+                />
+                <label htmlFor="kernel">Kernel:</label>
+                <input
+                    id="kernel"
+                    type="number"
+                    value={kernel}
+                    onChange={handleKernelChange}
+                />
+                <button onClick={handleLowPassFilter}>Low Pass Filter</button>
             </div>
-        )
-    }
+        )}
+    </div>
+);
+}
 
 export default LowPassFilter;

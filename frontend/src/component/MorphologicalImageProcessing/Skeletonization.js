@@ -40,26 +40,35 @@ function Skeletonization() {
             console.error("Skeletonization işlemi sırasında hata oluştu:", error);
         }
     }
-    return (
-        <div className="skeletonization">
-            <h1>Skeletonization</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
-                <div>
-                    <label htmlFor="kernelSize">Kernel Size:</label>
-                    <input
-                        id="kernelSize"
-                        type="number"
-                        value={kernelSize}
-                        onChange={handleKernelSizeChange}
-                    />
-                    <button onClick={handleSkeletonization}>Skeletonization</button>
-                </div>
-            )}
-            {skeletonImage && <img src={skeletonImage} alt="Skeletonization Result" width="300"/>}
+return (
+    <div className="skeletonization">
+        <p className="description">
+            Skeletonization is a morphological image processing technique that reduces the thickness of objects in an image to a single pixel. It is used to extract the main features of an object in an image.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {skeletonImage && <img src={skeletonImage} alt="Skeletonization Result" width="300" />}
         </div>
-    );
+
+        {/* Kernel Size ve Buton */}
+        {selectedFile && (
+            <div className="input-container">
+                <label htmlFor="kernelSize">Kernel Size:</label>
+                <input
+                    id="kernelSize"
+                    type="number"
+                    value={kernelSize}
+                    onChange={handleKernelSizeChange}
+                />
+                <button onClick={handleSkeletonization}>Skeletonization</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 export default Skeletonization;

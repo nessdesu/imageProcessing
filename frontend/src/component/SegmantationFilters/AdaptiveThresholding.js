@@ -4,11 +4,10 @@ import {data} from "react-router-dom";
 function AdaptiveThresholding() {
     const [image, setImage] = useState(null);
     const [meanImage, setMeanImage] = useState(null);
-    const [gaussianImage, setGaussianImage] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
     const [blockSize, setBlockSize] = useState(3);
     const [c, setC] = useState(2);
-    const [color, setColor] = useState("Mean");
+    const [color, setColor] = useState(255);
 
     const handleImageUpload = (event => {
         const file = event.target.files[0];
@@ -19,6 +18,7 @@ function AdaptiveThresholding() {
 
     const handleBlockSizeChange = (event) => {
         setBlockSize(event.target.value);
+        setBlockSize(event.target.value % 2 === 0 ? event.target.value + 1 : event.target.value);
     };
 
     const handleCChange = (event) => {
@@ -44,10 +44,7 @@ function AdaptiveThresholding() {
             if (response.ok) {
                 const blob = await response.blob();
                 const adaptiveURL = URL.createObjectURL(blob);
-                const meanImage = `data:image/png;base64,${data.mean}`; // Base64 formatındaki veriyi al
-                const gaussianImage = `data:image/png;base64,${data.gaussian}`; // Base64 formatındaki veriyi al
-                setMeanImage(meanImage);
-                setGaussianImage(gaussianImage);
+                setMeanImage(adaptiveURL);
             } else {
                 alert("Resim işlenirken bir hata oluştu.");
             }
@@ -57,11 +54,23 @@ function AdaptiveThresholding() {
     };
 
 
-    return (<div className="threshold">
-            <h1>Adaptive Threshold</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Seçilen Resim" width="300"/>}
-            {selectedFile && (<div>
+return (
+    <div className="main-container">
+        <h1 className="header">Adaptive Threshold</h1>
+        <p className="description">
+            The adaptive thresholding technique calculates the threshold for each pixel based on the mean intensity of its local neighborhood. It is useful for images with varying lighting conditions or uneven backgrounds.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimler yan yana gösterilecek */}
+        <div className="image-container">
+            {image && <img src={image} alt="Seçilen Resim" width="300" />}
+            {meanImage && <img src={meanImage} alt="Mean Adaptive Threshold" width="300" />}
+        </div>
+
+        {/* İşleme parametreleri */}
+        {selectedFile && (
+            <div className="input-container">
                 <label htmlFor="blockSize">Block Size:</label>
                 <input
                     id="blockSize"
@@ -84,14 +93,11 @@ function AdaptiveThresholding() {
                     onChange={handleColorChange}
                 />
                 <button onClick={handleAdaptiveThreshold}>Adaptive Threshold</button>
-            </div>)}
-            <div>
-                {meanImage && <img src={meanImage} alt="Mean Adaptive Threshold" width="300"/>}
-                {gaussianImage && <img src={gaussianImage} alt="Gaussian Adaptive Threshold" width="300"/>}
             </div>
+        )}
+    </div>
+);
 
-        </div>
-    );
 }
 
 

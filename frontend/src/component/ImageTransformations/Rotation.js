@@ -42,24 +42,36 @@ function Rotation() {
         }
     }
 
-    return (
-        <div className="rotation">
-        <h1>Rotation</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
-        <div>
-             <label htmlFor="angle">Angle:</label>
-                    <input
-                        id="angle"
-                        type="number"
-                        value={angle}
-                        onChange={handleAngleChange}
-                    />
-            <button onClick={handleRotation}>Rotate</button>
+return (
+    <div className="rotation">
+        <h1 className="header"> Rotation</h1>
+        <p className="description">
+            Rotation is a transformation that rotates an image by a certain angle around a given point. It is used to change the orientation of an image or correct its alignment.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimleri yan yana göstermek için kapsayıcı */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {rotationImage && <img src={rotationImage} alt="Rotation Result" width="300" />}
         </div>
-    )}{rotationImage && <img src={rotationImage} alt="Rotation Result" width="300"/>}
-        </div> );
+
+        {/* Açıyı ayarlamak ve döndürme işlemini uygulamak */}
+        {selectedFile && (
+            <div className="input-container">
+                <label htmlFor="angle">Angle:</label>
+                <input
+                    id="angle"
+                    type="number"
+                    value={angle}
+                    onChange={handleAngleChange}
+                />
+                <button onClick={handleRotation}>Rotate</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 

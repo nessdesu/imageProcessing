@@ -69,8 +69,13 @@ function ImageTransformations() {
           <div>
             {showContent()}
           </div>
-        ) : (
+        ) : (<div>
           <h2>Choose a technique.</h2>
+                <p>
+                  Image transformation refers to the process of altering the appearance or spatial structure of an image through mathematical operations. It can include tasks like scaling, rotation, translation, and warping to modify the image’s orientation, size, or shape. Transformations are essential in computer vision and graphics, enabling tasks like alignment, normalization, and feature extraction.
+                </p>
+                <img src="/Geometric-Transformation-in-Image-Processing.webp"></img>
+        </div>
         )}
       </div>
     </div>

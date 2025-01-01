@@ -57,47 +57,57 @@ function RegionGrowing() {
         }
     };
 
-     return (
-        <div className="rGrowing">
-            <h1>Region Growing</h1>
-            <input type="file" onChange={handleImageUpload}/>
-            {image && <img src={image} alt="Uploaded Image" width="300"/>}
-            {selectedFile && (
-                <div>
-                    <label htmlFor="seed_x">Seed X:</label>
-                    <input
-                        id="seed_x"
-                        type="number"
-                        value={seedX}
-                        onChange={handleSeedXChange}
-                    />
-                    <label htmlFor="seed_y">Seed Y:</label>
-                    <input
-                        id="seed_y"
-                        type="number"
-                        value={seedY}
-                        onChange={handleSeedYChange}
-                    />
-                    <label htmlFor="lDiff">Seed Y:</label>
-                    <input
-                        id="lDiff"
-                        type="number"
-                        value={lDiff}
-                        onChange={handleLDiffChange}
-                    />
-                    <label htmlFor="hDiff">Seed Y:</label>
-                    <input
-                        id="hDiff"
-                        type="number"
-                        value={hDiff}
-                        onChange={handleHDiffChange}
-                    />
-                    <button onClick={handleRegionGrowing}>Apply Region Growing</button>
-                </div>
-            )}
-            {regionGrowingImage && <img src={regionGrowingImage} alt="Region Growing" width="300"/>}
+   return (
+    <div className="rGrowing">
+        <h1 className="header">Region Growing</h1>
+        <p className="description">
+            Region growing is a region-based segmentation technique that groups pixels based on their intensity values. It starts from a seed point and adds neighboring pixels that meet certain criteria to the region. It is used to segment images with regions that have similar intensity values.
+        </p>
+        <input type="file" onChange={handleImageUpload} />
+
+        {/* Resimler yan yana */}
+        <div className="image-container">
+            {image && <img src={image} alt="Uploaded Image" width="300" />}
+            {regionGrowingImage && <img src={regionGrowingImage} alt="Region Growing" width="300" />}
         </div>
-     );
+
+        {/* Input alanları */}
+        {selectedFile && (
+            <div className="input-container">
+                <label htmlFor="seed_x">Seed X:</label>
+                <input
+                    id="seed_x"
+                    type="number"
+                    value={seedX}
+                    onChange={handleSeedXChange}
+                />
+                <label htmlFor="seed_y">Seed Y:</label>
+                <input
+                    id="seed_y"
+                    type="number"
+                    value={seedY}
+                    onChange={handleSeedYChange}
+                />
+                <label htmlFor="lDiff">Lower Diff:</label>
+                <input
+                    id="lDiff"
+                    type="number"
+                    value={lDiff}
+                    onChange={handleLDiffChange}
+                />
+                <label htmlFor="hDiff">Higher Diff:</label>
+                <input
+                    id="hDiff"
+                    type="number"
+                    value={hDiff}
+                    onChange={handleHDiffChange}
+                />
+                <button onClick={handleRegionGrowing}>Apply Region Growing</button>
+            </div>
+        )}
+    </div>
+);
+
 }
 
 
